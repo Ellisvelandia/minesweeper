@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isLeftEdge = i % width === 0;
       const isRightEdge = i % width === width - 1;
 
+
       if (squares[i].classList.contains("valid")) {
         if (i > 0 && !isLeftEdge && squares[i - 1].classList.contains("bomb"))
           total++;
@@ -79,7 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function addFlag(square) {
     if (isGameOver) return;
-    if (!square.classList.contains("checked") && flags < bombAmount) {
+          if (!square.classList.contains('checked') && (flags < bombAmount)) {
+
       if (!square.classList.contains("flag")) {
         square.classList.add("flag");
         square.innerHTML = "🚩";

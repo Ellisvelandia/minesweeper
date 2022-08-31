@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const bombsArray = Array(bombAmount).fill("bomb");
     const emptyArray = Array(width * width - bombAmount).fill("valid");
     const gameArray = emptyArray.concat(bombsArray);
-    const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
+    const shb = gameArray.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < width * width; i++) {
       const square = document.createElement("div");
       square.setAttribute("id", i);
-      square.classList.add(shuffledArray[i]);
+      square.classList.add(shb[i]);
       grid.appendChild(square);
       squares.push(square);
 
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < squares.length; i++) {
       let total = 0;
       const isLeftEdge = i % width === 0;
-      const isRightEdge = i % width === width - 1;
+      const isRightEdge = i % width === -1;
 
       if (squares[i].classList.contains("valid")) {
         if (i > 0 && !isLeftEdge && squares[i - 1].classList.contains("bomb"))
@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
+
   createBoard();
 
   function addFlag(square) {
@@ -211,3 +212,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
